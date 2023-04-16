@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import logo from './logo.svg';
 import './App.css';
-import { Login } from './Login';
-import { Register } from './Register';
-import { AccountSetup } from "./AccountSetup";
+import { Login } from './views/Login';
+import { Register } from './views/Register';
+import { AccountSetup } from "./views/AccountSetup";
 
 function App() {
 

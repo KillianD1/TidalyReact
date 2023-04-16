@@ -70,7 +70,7 @@ button {
   text-decoration: underline;
 }
 
-.btn-submi, .btn-register {
+.btn-submit, .btn-register {
   background: rgb(75, 171, 240);
   color: white;
   margin-left: auto;
