@@ -19,10 +19,10 @@ export const Login = (props) => {
 
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="email"> E-mail </label>
-                <input className ="BtnRegisterConnexion" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="votremail@gmail.com" id="email" name="email" />
+                <input className ="inputClass" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="votremail@gmail.com" id="email" name="email" />
 
                 <label htmlFor="password"> Mot de passe </label>
-                <input className ="BtnRegisterConnexion" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="************" id="password" name="password" />
+                <input className ="inputClass" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="************" id="password" name="password" />
 
                 <Link to="/AccountSetup">
                     <button className="btn-submit" type="submit">Se connecter</button>
