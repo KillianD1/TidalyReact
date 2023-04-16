@@ -44,7 +44,6 @@ input {
   padding: 1rem;
   border-radius: 10px;
   border: none;
-  /* box-shadow: 5px 5px 5px 1px rgba(0, 0, 255, .2); */
   box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -56,7 +55,6 @@ button {
 }
 
 .link-button {
-  /* background: rgb(75, 171, 240); */
   color: black;
   background: none;
   margin-left: auto;
@@ -102,7 +100,52 @@ button {
   margin-right: auto;
 }
 
+.circle-container {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  position: absolute;
+
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: white;
+
+  box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.3);
+}
+
+.circleRegister {
+  position: absolute;
+
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  background-color: white;
+
+  box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+
+  position: relative;
+  top: 30px;
+
+  width: 50px;
+  height: 75px;
+}
+
 h2 {
+
   color: rgb(63, 61, 61);
 }
 

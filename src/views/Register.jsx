@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import logo from '../assets/LogoTidalyTest1.png';
 
 export const Register = (props) => {
     const [email, setEmail] = useState('')
@@ -14,6 +15,12 @@ export const Register = (props) => {
 
     return (
         <div className="auth-form-container">
+
+            <div className="circle-Container">
+                <div className="circleRegister">
+                    <img className="logo" src={logo} alt="Cloudy Sky"></img>
+                </div>
+            </div>
 
             <h2>Page d'inscription</h2>
             <form className="register-form" onSubmit={handleSubmit}>

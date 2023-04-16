@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import logo from '../assets/LogoTidalyTest1.png';
 
 export const Login = (props) => {
 
@@ -14,6 +15,12 @@ export const Login = (props) => {
 
     return (
         <div className="auth-form-container">
+
+            <div className="circle-Container">
+                <div className="circle">
+                    <img className="logo" src={logo} alt="Cloudy Sky"></img>
+                </div>
+            </div>
 
             <h2>Page de connexion</h2>
 
