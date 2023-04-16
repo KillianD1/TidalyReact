@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 export const Register = (props) => {
     const [email, setEmail] = useState('')
@@ -28,7 +29,9 @@ export const Register = (props) => {
                 <button className="btn-submit" type="submit">S'inscrire</button>
             </form>
 
-            <button className="link-button" onClick={() =>props.onFormSwitch("login")}>J'ai déjà un compte !</button>
+            <Link to="/">
+                <button className="link-button" >J'ai déjà un compte !</button>
+            </Link>
         </div>
     )
 }
