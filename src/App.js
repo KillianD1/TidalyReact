@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from './logo.svg';
+import ReactDOM from "react-dom/client";
 import './App.css';
 import { Login } from './views/Login';
 import { Register } from './views/Register';
