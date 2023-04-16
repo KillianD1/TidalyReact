@@ -17,13 +17,16 @@ export const WaterMeterSetup = () => {
             <form className="AccountParametersForm" onSubmit={handleSubmit}>
 
                 <label for="consumption">Consomation actuelle</label>
-                <input className="inputClass" value={consumption} onChange={(e) => setConsumption(e.target.value)} type="number" id="consumption" name="consumption" min="0" max="10000000"></input>
+                <input className="inputClass" value={consumption} onChange={(e) => setConsumption(e.target.value)} type="number" id="consumption" name="consumption" min="0" max="9999999"></input>
 
                 <label for="objective">Objectif de consomation</label>
-                <input className="inputClass" value={objective} onChange={(e) => setObjective(e.target.value)} type="number" id="objective" name="objective" min="0" max="10000000"></input>
+                <input className="inputClass" value={objective} onChange={(e) => setObjective(e.target.value)} type="number" id="objective" name="objective" min="0" max="9999999"></input>
 
                 <button className="btn-register" type="submit">Enregistrer</button>
             </form>
+            <Link to="/AccountSetup">
+                <button className="link-button" >Retour</button>
+            </Link>
         </div>
     )
 }

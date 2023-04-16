@@ -10,7 +10,7 @@ export const AccountSetup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log();
+        console.log(name, firstName);
     }
 
     return (
