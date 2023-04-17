@@ -1,17 +1,39 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import logo from '../assets/LogoTidalyTest1.png';
+import logo from '../assets/LogoTidaly.png';
+
+import axios from 'axios';
+
+const instance = axios.create({
+    baseURL: 'http://localhost:3333/api/v1',
+    headers: { 'Access-Control-Allow-Origin': '*' }
+  });
 
 export const Login = (props) => {
 
     const [email, setEmail] = useState('')
-    const [pass,  setPass] = useState('')
+    const [password,  setPass] = useState('')
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
-        console.log(pass);
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(email);
+    //     console.log(pass);
+    // }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+          const response = await instance.post("/login", {
+            email: email,
+            password: password,
+          });
+          console.log(response);
+        //   window.location.href = "http://localhost:3000/login";
+        } catch (error) {
+          setErrorMessage(error.response.data.message);
+        }
+    };
 
     return (
         <div className="auth-form-container">
@@ -29,11 +51,11 @@ export const Login = (props) => {
                 <input className ="inputClass" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="votremail@gmail.com" id="email" name="email" />
 
                 <label htmlFor="password"> Mot de passe </label>
-                <input className ="inputClass" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="************" id="password" name="password" />
+                <input className ="inputClass" value={password} onChange={(e) => setPass(e.target.value)} type="password" placeholder="************" id="password" name="password" />
 
-                <Link to="/AccountSetup">
+                {/* <Link to="/AccountSetup"> */}
                     <button className="btn-submit" type="submit">Se connecter</button>
-                </Link>
+                {/* </Link> */}
 
             </form>
 

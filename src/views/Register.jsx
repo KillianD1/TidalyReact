@@ -1,37 +1,85 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import logo from '../assets/LogoTidalyTest1.png';
+import logo from '../assets/LogoTidaly.png';
+import axios from 'axios';
+
+const instance = axios.create({
+    baseURL: 'http://localhost:3333/api/v1',
+    headers: { 'Access-Control-Allow-Origin': '*' }
+  });
 
 export const Register = (props) => {
     const [email, setEmail] = useState('')
-    const [pass,  setPass] = useState('')
-    const [name,  setName] = useState('')
+    const [password,  setPass] = useState('')
+    const [confirmPassword,  setConfirmPassword] = useState('')
+    const [formValid, setFormValid] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessageDisplay, setErrorMessageDisplay] = useState("");
+    const [displayErrorMessage, setDisplayErrorMessage] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
-        console.log(pass);
-    }
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (formValid == true) {
+            setDisplayErrorMessage(false)
+            if (password == confirmPassword) {
+                alert("request")
+                try {
+                const response = await instance.post("/register", {
+                    email: email,
+                    password: password,
+                });
+                console.log(response);
+                window.location.href = "http://localhost:3000/login";
+                } catch (error) {
+                setErrorMessage(error.response.data.message);
+                }
+            } else {
+                alert("not same password")
+                setDisplayErrorMessage(true)
+                setErrorMessageDisplay("Veuillez saisir le même mot de passe")
+            }
+        }
+        else {
+            alert("something is empty")
+            setDisplayErrorMessage(true)
+            setErrorMessageDisplay("Tous les champs ne sont pas remplies")
+        }
+
+    };
+
+    const checkFormValidity = () => {
+        if (email && password && confirmPassword) {
+          setFormValid(true);
+        } else {
+          setFormValid(false);
+        }
+      };
 
     return (
         <div className="auth-form-container">
 
             <div className="circle-Container">
                 <div className="circleRegister">
-                    <img className="logo" src={logo} alt="Cloudy Sky"></img>
+                    <img className="logo" src={logo} alt="Logo"></img>
                 </div>
             </div>
 
             <h2>Page d'inscription</h2>
+
+            {displayErrorMessage && (
+            <div>{errorMessageDisplay}</div>
+            )}
+
             <form className="register-form" onSubmit={handleSubmit}>
-                <label htmlFor="name"> Nom de l'utilisateur </label>
-                <input className ="BtnRegisterConnexion" value={name} onChange={(e) => setName(e.target.value)} placeholder="Exemple:Lucas..." id="name" name="name" />
 
                 <label htmlFor="email"> E-mail </label>
-                <input className ="BtnRegisterConnexion" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="votremail@gmail.com" id="email" name="email" />
+                <input className ="BtnRegisterConnexion" value={email} onChange={(e) => {setEmail(e.target.value); checkFormValidity();}} type="email" placeholder="votremail@gmail.com" id="email" name="email" />
 
                 <label htmlFor="password"> Mot de passe </label>
-                <input className ="BtnRegisterConnexion" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="************" id="password" name="password" />
+                <input className ="BtnRegisterConnexion" value={password} onChange={(e) => {setPass(e.target.value); checkFormValidity();}} type="password" placeholder="************" id="password" name="password" />
+
+                <label htmlFor="passwordConfirm"> Confirmer le mot de passe </label>
+                <input className ="inputClass" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value); checkFormValidity();}} type="password" placeholder="************" id="passwordConfirm" name="passwordConfirm" />
 
                 <button className="btn-submit" type="submit">S'inscrire</button>
             </form>
