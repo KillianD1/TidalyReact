@@ -14,6 +14,8 @@ export const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password,  setPass] = useState('')
     const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessageDisplay, setErrorMessageDisplay] = useState("");
+    const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,9 +25,11 @@ export const Login = (props) => {
             password: password,
           });
           console.log(response);
+          setDisplayErrorMessage(false)
           window.location.href = "http://localhost:3002/AccountSetup";
         } catch (error) {
-          setErrorMessage(error.response.data.message);
+            setDisplayErrorMessage(true)
+            setErrorMessageDisplay("E-mail ou mot de passe incorrect")
         }
     };
 
@@ -39,6 +43,10 @@ export const Login = (props) => {
             </div>
 
             <h2>Page de connexion</h2>
+
+            {displayErrorMessage && (
+            <div>{errorMessageDisplay}</div>
+            )}
 
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="email"> E-mail </label>
