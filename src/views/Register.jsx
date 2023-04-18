@@ -67,7 +67,7 @@ export const Register = (props) => {
             <h2>Page d'inscription</h2>
 
             {displayErrorMessage && (
-            <div>{errorMessageDisplay}</div>
+            <p style="background-color:red;">{errorMessageDisplay}</p>
             )}
 
             <form className="register-form" onSubmit={handleSubmit}>
@@ -76,10 +76,10 @@ export const Register = (props) => {
                 <input className ="BtnRegisterConnexion" value={email} onChange={(e) => {setEmail(e.target.value); checkFormValidity();}} type="email" placeholder="votremail@gmail.com" id="email" name="email" />
 
                 <label htmlFor="password"> Mot de passe </label>
-                <input className ="BtnRegisterConnexion" value={password} onChange={(e) => {setPass(e.target.value); checkFormValidity();}} type="password" placeholder="************" id="password" name="password" />
+                <input className ="BtnRegisterConnexion" value={password} onChange={(e) => {setPass(e.target.value); checkFormValidity();}} type="password" placeholder="************" id="password" name="password" minlength="8"/>
 
                 <label htmlFor="passwordConfirm"> Confirmer le mot de passe </label>
-                <input className ="inputClass" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value); checkFormValidity();}} type="password" placeholder="************" id="passwordConfirm" name="passwordConfirm" />
+                <input className ="inputClass" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value); checkFormValidity();}} type="password" placeholder="************" id="passwordConfirm" name="passwordConfirm" minlength="8"/>
 
                 <button className="btn-submit" type="submit">S'inscrire</button>
             </form>

@@ -45,7 +45,7 @@ export const Login = (props) => {
             <h2>Page de connexion</h2>
 
             {displayErrorMessage && (
-            <div>{errorMessageDisplay}</div>
+            <p style="background-color:red;">{errorMessageDisplay}</p>
             )}
 
             <form className="login-form" onSubmit={handleSubmit}>
