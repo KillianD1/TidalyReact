@@ -29,7 +29,7 @@ export const Register = (props) => {
                     password: password,
                 });
                 console.log(response);
-                window.location.href = "http://localhost:3000/login";
+                window.location.href = "http://localhost:3002/";
                 } catch (error) {
                 setErrorMessage(error.response.data.message);
                 }

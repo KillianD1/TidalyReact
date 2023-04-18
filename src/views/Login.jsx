@@ -15,12 +15,6 @@ export const Login = (props) => {
     const [password,  setPass] = useState('')
     const [errorMessage, setErrorMessage] = useState("");
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    //     console.log(pass);
-    // }
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -29,7 +23,7 @@ export const Login = (props) => {
             password: password,
           });
           console.log(response);
-        //   window.location.href = "http://localhost:3000/login";
+          window.location.href = "http://localhost:3002/AccountSetup";
         } catch (error) {
           setErrorMessage(error.response.data.message);
         }
