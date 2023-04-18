@@ -29,7 +29,7 @@ export const Register = (props) => {
                     password: password,
                 });
                 console.log(response);
-                window.location.href = "http://localhost:3002/";
+                window.location.href = "http://localhost:3000/";
                 } catch (error) {
                 setErrorMessage(error.response.data.message);
                 }
@@ -67,7 +67,7 @@ export const Register = (props) => {
             <h2>Page d'inscription</h2>
 
             {displayErrorMessage && (
-            <p style="background-color:red;">{errorMessageDisplay}</p>
+            <p>{errorMessageDisplay}</p>
             )}
 
             <form className="register-form" onSubmit={handleSubmit}>

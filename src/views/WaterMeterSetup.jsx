@@ -21,8 +21,9 @@ export const WaterMeterSetup = () => {
 
                 <label for="objective">Objectif de consomation</label>
                 <input className="inputClass" value={objective} onChange={(e) => setObjective(e.target.value)} type="number" id="objective" name="objective" min="0" max="9999999"></input>
-
-                <button className="btn-register" type="submit">Enregistrer</button>
+                <Link to="/SensorDetails">
+                    <button className="btn-register" type="submit">Enregistrer</button>
+                </Link>
             </form>
             <Link to="/AccountSetup">
                 <button className="link-button" >Retour</button>

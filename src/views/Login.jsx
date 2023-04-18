@@ -26,7 +26,7 @@ export const Login = (props) => {
           });
           console.log(response);
           setDisplayErrorMessage(false)
-          window.location.href = "http://localhost:3002/AccountSetup";
+          window.location.href = "http://localhost:3000/AccountSetup";
         } catch (error) {
             setDisplayErrorMessage(true)
             setErrorMessageDisplay("E-mail ou mot de passe incorrect")
@@ -45,7 +45,7 @@ export const Login = (props) => {
             <h2>Page de connexion</h2>
 
             {displayErrorMessage && (
-            <p style="background-color:red;">{errorMessageDisplay}</p>
+            <p>{errorMessageDisplay}</p>
             )}
 
             <form className="login-form" onSubmit={handleSubmit}>
